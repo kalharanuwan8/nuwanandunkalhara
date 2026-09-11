@@ -61,7 +61,7 @@ export function HeroPortrait() {
 
         <div className="chip-badge chip-bottom-left">
           <Terminal size={14} className="text-lime" />
-          <span>Full-Stack Architecture</span>
+          <span>Full-Stack Developer</span>
         </div>
       </div>
 

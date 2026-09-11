@@ -73,7 +73,27 @@ export default function Portfolio() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
+  const [sriLankaTime, setSriLankaTime] = useState<string>('');
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setSriLankaTime(
+        now.toLocaleTimeString('en-US', {
+          timeZone: 'Asia/Colombo',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        })
+      );
+    };
+
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -205,7 +225,10 @@ export default function Portfolio() {
         <section className="hero shell" id="home">
           <div className="hero-topline">
             <p className="eyebrow">FULL-STACK ARCHITECTURE / MACHINE LEARNING / REAL-WORLD SYSTEMS</p>
-            <span>SRI LANKA (UTC+05:30)</span>
+            <span>
+              <span className="live-clock-dot" aria-hidden="true" />
+              SRI LANKA {sriLankaTime ? `· ${sriLankaTime}` : ''} (UTC+05:30)
+            </span>
           </div>
 
           <div className="hero-grid">
@@ -217,7 +240,7 @@ export default function Portfolio() {
                 Code scales,<br></br>
                 <span>AI thinks.</span>
               </h1>
-              <p className="hero-description flex text-justify">
+              <p className="hero-description flex text-left">
                     Software engineer and AI researcher building reliable, high-performance systems from scalable web platforms to applied multimodal machine learning.
               </p>
 
@@ -414,7 +437,7 @@ export default function Portfolio() {
                 <p className="about-lead">
                   Where curiosity meets consistency
                 </p>
-                <p className="text-justify">
+                <p>
                   I’m a final-year Software Engineering undergraduate at General Sir John Kotelawala Defence University. Alongside my degree, I engineer internal automation systems and customer-facing web platforms at HardTalk. My engineering journey connects responsive frontend interfaces, distributed microservices, cloud infrastructure, and practical multimodal AI models.
                 </p>
                   
