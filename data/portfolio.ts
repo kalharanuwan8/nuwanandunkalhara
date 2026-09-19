@@ -24,6 +24,25 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 'brieflyai',
+    name: 'BrieflyAi',
+    category: 'AI & research',
+    type: 'Agentic AI · Open Source',
+    summary: 'Turn messy meeting conversations into structured business execution.',
+    description: 'An enterprise-grade meeting intelligence system and compound workflow agent. Powered by local LLMs (Ollama Qwen 2.5) with deterministic guardrails, reflection loops, and human-in-the-loop triage to extract verified decisions, tasks, and personalized email digests with zero cloud data leakage.',
+    features: [
+      'Extracts decisions with rationales, action items, owners, and deadlines',
+      'Dynamic speaker & roster validation with human-in-the-loop triage for ambiguous data',
+      'Automated team recap generation & personalized attendee follow-up email drafts',
+      'Multi-platform task dispatch ready for Linear, Jira, Asana, and Slack',
+      'Executive action tracking dashboard backed by local SQLite with WAL mode'
+    ],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Ollama', 'Zod', 'SQLite', 'Tailwind CSS'],
+    accent: 'violet',
+    mark: 'BA',
+    github: 'https://github.com/kalharanuwan8/BrieflyAi'
+  },
+  {
     id: 'citizensafe',
     name: 'CitizenSafe',
     category: 'Full-stack',
